@@ -1,6 +1,7 @@
 package br.com.ftm.jokenpo.business;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,6 +30,16 @@ public class JogadorService {
 
 		return jogadorRepository.listarJogadores();
 
+	}
+
+	public Jogador validarJogador(String idJogador) throws JogadorException {
+		Optional<Jogador> jogador = jogadorRepository.listarJogadores().stream().filter(j -> j.getId().equals(idJogador)).findFirst();
+		
+		if(jogador.isPresent()) {
+			return jogador.get();
+		}else {
+			throw new JogadorException("Usuário não localizado!");
+		}
 	}
 
 }
