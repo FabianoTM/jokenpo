@@ -21,15 +21,12 @@ configurations {
 
 dependencies {
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
-	implementation 'org.springframework.boot:spring-boot-starter'
-	testImplementation('org.springframework.boot:spring-boot-starter-test') {
-		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
-	}
-	
+	implementation 'org.springframework.boot:spring-boot-starter'	
     compile('org.springframework.boot:spring-boot-starter-web')
     compile('io.springfox:springfox-swagger2:2.9.2')
     compile('io.springfox:springfox-swagger-ui:2.9.2')
     compile('org.apache.commons:commons-lang3:3.0')
+    testImplementation ('org.springframework.boot:spring-boot-starter-test')
 }
 
 test {
